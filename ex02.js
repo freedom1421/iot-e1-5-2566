@@ -25,6 +25,15 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => {
   res.send({ ok: 1 })
 })
+app.get('/lists',async (req, res) => {
+  console.log('lists')
+  let row = await db('users_student')
+  res.send({
+    datas: row,
+    status: 1,
+  })
+})
+
 app.listen(7001, () => {
   console.log('ready:candle:7001')
 })
